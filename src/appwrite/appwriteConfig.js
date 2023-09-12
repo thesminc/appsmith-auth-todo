@@ -1,11 +1,18 @@
-import {Client, Account, Databases} from 'appwrite'
+import { Client, Account, Databases } from "appwrite";
 
 const client = new Client();
 
-client.setEndpoint("http://localhost/v1").setProject("62cb05a9258496d8f382")
+client
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("6500ac50499578c4c75e");
 
-export const account = new Account(client)
+// Subscribe to files channel
+client.subscribe("users", (response) => {
+  console.log(response.payload);
+});
+
+export const account = new Account(client);
 
 //Database
 
-export const databases = new Databases(client, "62cb05e74e74f14aaea6")
+export const databases = new Databases(client, "6500acb55862ac5ec9ad");
